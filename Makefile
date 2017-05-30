@@ -11,7 +11,7 @@ mysql:
 	@docker-compose exec mysql mysql -uroot -proot git_webhook
 		
 createdb:
-	@docker-compose exec app python manage.py createdb
+	@docker-compose exec gitwebhook python manage.py createdb
 		
 dev:
 	@docker-compose -f docker/docker-compose-dev.yml up
@@ -23,4 +23,4 @@ test:
 	@docker-compose -f docker/docker-compose-test.yml up -d
 
 run:
-	@gunicorn -k eventlet -w 1 -b :18340 --log-level=debug manage:app
+	@gunicorn -k eventlet -w 1 -b :10080 --log-level=debug manage:app
